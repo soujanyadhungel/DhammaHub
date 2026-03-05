@@ -1,0 +1,41 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { Home, Wind, BookOpen, Users, Languages } from "lucide-react";
+
+const mobileNavItems = [
+  { href: "/dashboard", label: "Home", icon: Home },
+  { href: "/meditate", label: "Meditate", icon: Wind },
+  { href: "/library", label: "Library", icon: BookOpen },
+  { href: "/community", label: "Community", icon: Users },
+  { href: "/learn", label: "Pali", icon: Languages },
+];
+
+export function MobileNav() {
+  const pathname = usePathname();
+
+  return (
+    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white dark:bg-brown-500 border-t border-beige-200 dark:border-brown-400 px-2 py-2 flex items-center justify-around safe-area-pb">
+      {mobileNavItems.map(({ href, label, icon: Icon }) => {
+        const isActive = pathname === href;
+        return (
+          <Link
+            key={href}
+            href={href}
+            className={cn(
+              "flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl transition-all",
+              isActive
+                ? "text-rust"
+                : "text-brown-200 dark:text-beige-300"
+            )}
+          >
+            <Icon size={20} className={cn(isActive && "stroke-rust")} />
+            <span className="text-[10px] font-medium">{label}</span>
+          </Link>
+        );
+      })}
+    </nav>
+  );
+}

@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+@layer base {
+  :root {
+    --background: 244 239 231; /* cream */
+    --foreground: 41 33 18;    /* brown-600 */
+    --card: 255 255 255;
+    --card-foreground: 41 33 18;
+    --border: 220 211 192;     /* beige */
+    --ring: 186 86 38;         /* rust */
+  }
+
+  .dark {
+    --background: 41 33 18;    /* brown-600 */
+    --foreground: 244 239 231; /* cream */
+    --card: 82 64 37;          /* brown-400 */
+    --card-foreground: 244 239 231;
+    --border: 82 64 37;
+    --ring: 186 86 38;
+  }
+
+  * {
+    @apply border-beige-200 dark:border-brown-400;
+  }
+
+  body {
+    @apply bg-cream text-brown-600 dark:bg-brown-600 dark:text-cream font-sans antialiased;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-cream dark:bg-brown-500;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-beige-300 dark:bg-brown-300 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-brown-100 dark:bg-brown-200;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white dark:bg-brown-400 rounded-2xl border border-beige-200 dark:border-brown-300 shadow-sm;
+  }
+
+  .btn-primary {
+    @apply bg-rust text-white hover:bg-rust-dark active:bg-rust-dark px-4 py-2 rounded-xl font-medium transition-colors duration-150;
+  }
+
+  .btn-secondary {
+    @apply bg-beige-200 dark:bg-brown-300 text-brown-600 dark:text-cream hover:bg-beige-300 dark:hover:bg-brown-200 px-4 py-2 rounded-xl font-medium transition-colors duration-150;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-beige-100 dark:hover:bg-brown-300 text-brown-400 dark:text-beige-200 px-3 py-2 rounded-lg transition-colors duration-150;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-brown-300 dark:text-beige-200 hover:bg-beige-100 dark:hover:bg-brown-300 hover:text-brown-500 dark:hover:text-cream transition-all duration-150 text-sm font-medium;
+  }
+
+  .nav-item-active {
+    @apply bg-rust text-white dark:text-white hover:bg-rust-dark;
+  }
+
+  .section-title {
+    @apply text-xl font-semibold text-brown-500 dark:text-cream;
+  }
+
+  .input {
+    @apply w-full bg-white dark:bg-brown-400 border border-beige-200 dark:border-brown-300 rounded-xl px-4 py-2.5 text-brown-600 dark:text-cream placeholder-brown-200 dark:placeholder-brown-100 focus:outline-none focus:ring-2 focus:ring-rust/50 transition-all;
+  }
+}
+
+/* Leaflet override */
+.leaflet-container {
+  @apply rounded-2xl;
+  font-family: Inter, sans-serif;
+}
+
+/* Audio player animation */
+@keyframes equalizer {
+  0%, 100% { height: 4px; }
+  50% { height: 14px; }
+}
+
+.equalizer-bar {
+  animation: equalizer 0.8s ease-in-out infinite;
+}
+.equalizer-bar:nth-child(2) { animation-delay: 0.2s; }
+.equalizer-bar:nth-child(3) { animation-delay: 0.4s; }

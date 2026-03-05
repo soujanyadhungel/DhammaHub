@@ -1,0 +1,36 @@
+{
+  "name": "Dhamma Hub",
+  "short_name": "Dhamma Hub",
+  "description": "Everything Vipassana in the Goenka tradition — meditation timer, books, discourses, courses, and community.",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#f4efe7",
+  "theme_color": "#f4efe7",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/dhamma-wheel.gif",
+      "sizes": "70x105",
+      "type": "image/gif"
+    }
+  ],
+  "categories": ["health", "lifestyle", "education"],
+  "lang": "en",
+  "shortcuts": [
+    {
+      "name": "Meditate",
+      "url": "/meditate",
+      "description": "Open the meditation timer"
+    },
+    {
+      "name": "Daily Dhamma",
+      "url": "/daily",
+      "description": "Today's quote and Pali word"
+    }
+  ]
+}
