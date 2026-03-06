@@ -15,7 +15,7 @@ import {
   Languages,
   LogIn,
 } from "lucide-react";
-import Image from "next/image";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "/dhammhub";
 
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: Home },
@@ -36,13 +36,13 @@ export function Sidebar() {
     <aside className="hidden md:flex flex-col w-64 min-h-screen bg-white dark:bg-brown-500 border-r border-beige-200 dark:border-brown-400 px-4 py-6 flex-shrink-0">
       {/* Logo */}
       <div className="flex items-center gap-2.5 px-3 mb-8">
-        <Image
-          src="/dhamma-wheel.gif"
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`${basePath}/dhamma-wheel.gif`}
           alt="Dhamma"
           width={36}
           height={36}
           className="w-9 h-9 rounded-xl"
-          unoptimized
         />
         <div>
           <p className="font-semibold text-brown-500 dark:text-cream leading-none">
