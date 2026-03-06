@@ -2,22 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap");
 
 @layer base {
   :root {
-    --background: 244 239 231; /* cream */
-    --foreground: 41 33 18;    /* brown-600 */
+    --background: 244 239 231;
+    --foreground: 41 33 18;
     --card: 255 255 255;
     --card-foreground: 41 33 18;
-    --border: 220 211 192;     /* beige */
-    --ring: 186 86 38;         /* rust */
+    --border: 220 211 192;
+    --ring: 186 86 38;
   }
 
   .dark {
-    --background: 41 33 18;    /* brown-600 */
-    --foreground: 244 239 231; /* cream */
-    --card: 82 64 37;          /* brown-400 */
+    --background: 41 33 18;
+    --foreground: 244 239 231;
+    --card: 82 64 37;
     --card-foreground: 244 239 231;
     --border: 82 64 37;
     --ring: 186 86 38;
@@ -31,16 +31,16 @@
     @apply bg-cream text-brown-600 dark:bg-brown-600 dark:text-cream font-sans antialiased;
   }
 
-  /* Custom scrollbar */
+  /* Elegant scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-cream dark:bg-brown-500;
+    @apply bg-transparent;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-beige-300 dark:bg-brown-300 rounded-full;
+    @apply bg-beige-300/60 dark:bg-brown-300/60 rounded-full;
   }
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-brown-100 dark:bg-brown-200;
@@ -48,43 +48,70 @@
 }
 
 @layer components {
+  /* ---- Cards ---- */
   .card {
-    @apply bg-white dark:bg-brown-400 rounded-2xl border border-beige-200 dark:border-brown-300 shadow-sm;
+    @apply bg-white dark:bg-brown-400 rounded-2xl border border-beige-200/80 dark:border-brown-300/60 shadow-card dark:shadow-card-dark transition-all duration-300;
+  }
+  .card:hover {
+    @apply shadow-card-hover dark:shadow-card-dark-hover;
   }
 
+  /* ---- Buttons ---- */
   .btn-primary {
-    @apply bg-rust text-white hover:bg-rust-dark active:bg-rust-dark px-4 py-2 rounded-xl font-medium transition-colors duration-150;
+    @apply bg-rust text-white hover:bg-rust-dark active:bg-rust-dark px-5 py-2.5 rounded-xl font-semibold text-sm tracking-wide transition-all duration-200 shadow-sm hover:shadow-md;
   }
 
   .btn-secondary {
-    @apply bg-beige-200 dark:bg-brown-300 text-brown-600 dark:text-cream hover:bg-beige-300 dark:hover:bg-brown-200 px-4 py-2 rounded-xl font-medium transition-colors duration-150;
+    @apply bg-beige-200/70 dark:bg-brown-300/50 text-brown-500 dark:text-cream hover:bg-beige-300 dark:hover:bg-brown-200 px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200;
   }
 
   .btn-ghost {
-    @apply hover:bg-beige-100 dark:hover:bg-brown-300 text-brown-400 dark:text-beige-200 px-3 py-2 rounded-lg transition-colors duration-150;
+    @apply hover:bg-beige-100 dark:hover:bg-brown-300/60 text-brown-300 dark:text-beige-200 px-3 py-2 rounded-xl transition-all duration-200;
   }
 
+  /* ---- Navigation ---- */
   .nav-item {
-    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-brown-300 dark:text-beige-200 hover:bg-beige-100 dark:hover:bg-brown-300 hover:text-brown-500 dark:hover:text-cream transition-all duration-150 text-sm font-medium;
+    @apply flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-brown-200 dark:text-beige-300 hover:bg-beige-100/80 dark:hover:bg-brown-400/60 hover:text-brown-500 dark:hover:text-cream transition-all duration-200 text-[13px] font-medium tracking-wide;
   }
 
   .nav-item-active {
-    @apply bg-rust text-white dark:text-white hover:bg-rust-dark;
+    @apply bg-rust/90 text-white dark:text-white hover:bg-rust shadow-sm;
   }
 
+  /* ---- Typography ---- */
   .section-title {
-    @apply text-xl font-semibold text-brown-500 dark:text-cream;
+    @apply text-xl font-serif font-semibold text-brown-500 dark:text-cream tracking-tight;
   }
 
+  .label-uppercase {
+    @apply text-[10px] font-semibold uppercase tracking-[0.15em] text-brown-200 dark:text-beige-300;
+  }
+
+  /* ---- Form inputs ---- */
   .input {
-    @apply w-full bg-white dark:bg-brown-400 border border-beige-200 dark:border-brown-300 rounded-xl px-4 py-2.5 text-brown-600 dark:text-cream placeholder-brown-200 dark:placeholder-brown-100 focus:outline-none focus:ring-2 focus:ring-rust/50 transition-all;
+    @apply w-full bg-white dark:bg-brown-400/80 border border-beige-200/80 dark:border-brown-300/50 rounded-xl px-4 py-2.5 text-sm text-brown-600 dark:text-cream placeholder-brown-200/70 dark:placeholder-brown-100/50 focus:outline-none focus:ring-2 focus:ring-rust/30 focus:border-rust/40 transition-all duration-200;
+  }
+
+  /* ---- Decorative ---- */
+  .grain-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px;
+  }
+  .dark .grain-overlay {
+    opacity: 0.04;
   }
 }
 
 /* Leaflet override */
 .leaflet-container {
   @apply rounded-2xl;
-  font-family: Inter, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
 /* Audio player animation */

@@ -10,7 +10,6 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Pariyatti mobile app palette — light mode
         cream: {
           DEFAULT: "#f4efe7",
           50: "#faf8f5",
@@ -39,10 +38,15 @@ const config: Config = {
           light: "#d4673a",
           dark: "#9a4520",
         },
-        gold: "#c7a92c",
+        gold: {
+          DEFAULT: "#c7a92c",
+          light: "#d4b94a",
+          dark: "#a88d1e",
+        },
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        serif: ["'Cormorant Garamond'", "Georgia", "serif"],
+        sans: ["'Plus Jakarta Sans'", "system-ui", "sans-serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -50,9 +54,14 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       animation: {
-        "fade-in": "fadeIn 0.4s ease-in-out",
-        "slide-up": "slideUp 0.3s ease-out",
+        "fade-in": "fadeIn 0.5s ease-out",
+        "slide-up": "slideUp 0.4s ease-out",
+        "slide-up-delay-1": "slideUp 0.4s ease-out 0.08s both",
+        "slide-up-delay-2": "slideUp 0.4s ease-out 0.16s both",
+        "slide-up-delay-3": "slideUp 0.4s ease-out 0.24s both",
+        "slide-up-delay-4": "slideUp 0.4s ease-out 0.32s both",
         "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "glow": "glow 3s ease-in-out infinite alternate",
       },
       keyframes: {
         fadeIn: {
@@ -60,9 +69,20 @@ const config: Config = {
           "100%": { opacity: "1" },
         },
         slideUp: {
-          "0%": { transform: "translateY(10px)", opacity: "0" },
+          "0%": { transform: "translateY(12px)", opacity: "0" },
           "100%": { transform: "translateY(0)", opacity: "1" },
         },
+        glow: {
+          "0%": { opacity: "0.4" },
+          "100%": { opacity: "0.7" },
+        },
+      },
+      boxShadow: {
+        "card": "0 1px 3px rgba(82, 64, 37, 0.06), 0 1px 2px rgba(82, 64, 37, 0.04)",
+        "card-hover": "0 8px 25px rgba(82, 64, 37, 0.1), 0 4px 10px rgba(82, 64, 37, 0.06)",
+        "card-dark": "0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.12)",
+        "card-dark-hover": "0 8px 25px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(0, 0, 0, 0.18)",
+        "inner-glow": "inset 0 1px 0 0 rgba(255,255,255,0.05)",
       },
     },
   },

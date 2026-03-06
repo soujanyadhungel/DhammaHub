@@ -8,23 +8,30 @@ export default async function RootPage() {
   if (session) redirect("/dashboard");
 
   return (
-    <div className="min-h-screen bg-cream dark:bg-brown-600">
+    <div className="min-h-screen bg-cream dark:bg-brown-600 relative">
+      {/* Grain */}
+      <div className="grain-overlay" />
+
+      {/* Ambient light */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full bg-gradient-radial from-rust/5 via-gold/3 to-transparent blur-3xl" />
+      </div>
+
       {/* Hero */}
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-brown-200/30 to-rust/10 pointer-events-none" />
-        <div className="relative max-w-4xl mx-auto px-6 py-24 text-center">
-          <div className="flex items-center justify-center gap-3 mb-8">
-            <div className="w-12 h-12 rounded-2xl bg-rust flex items-center justify-center shadow-lg">
-              <Flower2 className="w-6 h-6 text-white" />
+        <div className="relative max-w-4xl mx-auto px-6 py-28 md:py-36 text-center">
+          <div className="flex items-center justify-center gap-3 mb-10">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-rust to-rust-dark flex items-center justify-center shadow-lg shadow-rust/20">
+              <Flower2 className="w-7 h-7 text-white" strokeWidth={1.6} />
             </div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-light text-brown-500 dark:text-cream mb-4 tracking-tight">
+          <h1 className="font-serif text-5xl md:text-6xl font-light text-brown-500 dark:text-cream mb-5 tracking-tight leading-[1.1]">
             Dhamma Hub
           </h1>
-          <p className="text-lg text-brown-300 dark:text-beige-200 mb-4">
+          <p className="text-lg md:text-xl text-brown-300 dark:text-beige-200 mb-4 font-light">
             Everything Vipassana, in one place.
           </p>
-          <p className="text-base text-brown-200 dark:text-beige-300 mb-10 max-w-xl mx-auto">
+          <p className="text-base text-brown-200/80 dark:text-beige-300/70 mb-12 max-w-xl mx-auto leading-relaxed">
             Books, discourses, meditation timer, course finder, community, and
             daily Dhamma — all in one beautiful app for practitioners in the S.N.
             Goenka tradition.
@@ -32,7 +39,7 @@ export default async function RootPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/signup"
-              className="btn-primary px-8 py-3.5 text-base rounded-2xl flex items-center gap-2 justify-center"
+              className="btn-primary px-8 py-3.5 text-base rounded-2xl flex items-center gap-2 justify-center shadow-lg shadow-rust/20"
             >
               Get started <ArrowRight size={16} />
             </Link>
@@ -47,7 +54,7 @@ export default async function RootPage() {
       </div>
 
       {/* Features */}
-      <div className="max-w-4xl mx-auto px-6 pb-24">
+      <div className="relative max-w-4xl mx-auto px-6 pb-28">
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
           {[
             {
@@ -68,7 +75,7 @@ export default async function RootPage() {
             {
               icon: Users,
               title: "Community",
-              desc: "Live r/vipassana posts and old student group sitting schedules.",
+              desc: "Find group sittings and one-day sits near you, worldwide.",
             },
             {
               icon: Sun,
@@ -81,22 +88,28 @@ export default async function RootPage() {
               desc: "Log sessions, build streaks, and bookmark your favourite resources.",
             },
           ].map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="card p-5">
-              <Icon size={20} className="text-rust mb-3" />
-              <p className="font-semibold text-brown-500 dark:text-cream mb-1">
+            <div key={title} className="card p-6 group">
+              <div className="w-10 h-10 rounded-xl bg-rust/8 dark:bg-rust/15 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105">
+                <Icon size={20} className="text-rust" strokeWidth={1.8} />
+              </div>
+              <p className="font-serif text-lg font-semibold text-brown-500 dark:text-cream mb-1.5 tracking-tight">
                 {title}
               </p>
-              <p className="text-sm text-brown-300 dark:text-beige-200 leading-relaxed">
+              <p className="text-sm text-brown-300/80 dark:text-beige-200/70 leading-relaxed">
                 {desc}
               </p>
             </div>
           ))}
         </div>
 
-        <p className="text-center text-xs text-brown-200 dark:text-beige-300 mt-12">
-          Built with love for the Dhamma. May all beings be happy, peaceful, and
-          liberated.
-        </p>
+        <div className="mt-16 text-center">
+          <p className="text-xs text-brown-200/60 dark:text-beige-300/50 italic font-serif">
+            Built with love for the Dhamma.
+          </p>
+          <p className="text-[10px] text-gold/40 dark:text-gold/30 mt-2 tracking-[0.2em] uppercase font-sans font-medium">
+            May all beings be happy, peaceful, and liberated
+          </p>
+        </div>
       </div>
     </div>
   );
